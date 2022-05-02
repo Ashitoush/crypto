@@ -1,0 +1,34 @@
+--------------Ceaser Cipher------------------
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char msg[] = "We do not Develope, We Innovate", ch;
+    int key=3, i;
+
+    for (i = 0; msg[i] != '\0'; i++)
+    {
+        ch = msg[i];
+        if (ch >= 'a' && ch <= 'z')
+            ch = (ch + key - 97) % 26 + 97;
+        else if(ch >= 'A' && ch <= 'Z')
+            ch = (ch + key - 65) % 26 + 65;
+        msg[i] = ch;
+
+    }
+    printf("Cipher Text:- %s\n", msg);
+
+    for (i = 0; msg[i] != '\0'; i++)
+    {
+        ch = msg[i];
+        if (ch >= 'a' && ch <= 'z')
+            ch = (ch - key - 97) % 26 + 97;
+        else if (ch >= 'A' && ch <= 'Z')
+            ch = (ch - key - 65) % 26 + 65;
+        msg[i] = ch;
+    }
+    printf("Plain Text:- %s\n", msg);
+    return 0;
+}
